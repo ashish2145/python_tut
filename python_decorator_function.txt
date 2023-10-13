@@ -1,0 +1,29 @@
+python decorator functions are those which takes another function as an argument and extend their behaviour.
+
+e.g.
+
+
+
+examply.py
+# definition of the decorator function
+def multiply_by_100_decorator(decorated_function):
+  def wrapper(num1, num2):
+    result = decorated_function(num1, num2) * 100
+    return result
+
+  return wrapper
+
+# definition of the `add` function decorated with the `multiply_by_100_decorator`
+@multiply_by_100_decorator
+def add(num1, num2):
+  return num1 + num2
+
+# definition of the `subtract` function decorated with the `multiply_by_100_decorator`
+@multiply_by_100_decorator
+def subtract(num1, num2):
+  return num1 - num2
+
+
+# calling hte decorated functions
+print(add(1,9))       # prints 1000
+print(subtract(4,2))  # prints 200
